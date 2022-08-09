@@ -4,4 +4,7 @@
     <string name="second_activity_label">Second Activity</string>
     <string name="text_message_received">Message Received</string>
     <string name="text_enter_your_message_here">Enter your message here</string>
+    <string name="btn_second">reply</string>
+    <string name="ed_text_reply_to_the_message">Reply to the message</string>
+    <string name="text_message_replied">Reply</string>
 </resources>

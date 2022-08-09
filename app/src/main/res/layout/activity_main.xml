@@ -6,29 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <EditText
-       android:id="@+id/ed_text_main_activity"
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toStartOf="@id/btn_send"
-       app:layout_constraintBottom_toBottomOf="parent"
-       android:layout_margin="12dp"
-       android:inputType="textLongMessage"
-       android:ems="10"
-       android:hint="@string/text_enter_your_message_here"
-       />
+    <TextView
+        android:id="@+id/header_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="@string/text_message_replied"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-   <Button
-       android:id="@+id/btn_send"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/send_btn_text"
-       android:textSize="20sp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       android:layout_margin="12dp"
-       android:onClick="launchSecondActivity"
-       />
+    <TextView
+        android:id="@+id/textView_reply_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/header_reply"
+        app:layout_constraintStart_toStartOf="@+id/header_reply"
+        app:layout_constraintTop_toBottomOf="@id/header_reply"
+        tools:text="Received message" />
+
+    <EditText
+        android:id="@+id/ed_text_main_activity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:ems="10"
+        android:hint="@string/text_enter_your_message_here"
+        android:inputType="textLongMessage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_send"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:onClick="launchSecondActivity"
+        android:text="@string/send_btn_text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
