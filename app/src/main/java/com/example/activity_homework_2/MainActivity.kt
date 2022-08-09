@@ -1,5 +1,6 @@
 package com.example.activity_homework_2
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,17 +8,32 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 
 const val TAG = "MainActivity"
 const val EXTRA_MESSAGE = "com.example.activity_homework_2.extra.MESSAGE"
-const val TEXT_REQUEST = 1
+
 
 class MainActivity : AppCompatActivity() {
 
     private var editTextMessage: EditText? = null
     private var replyHeaderTextView: TextView? = null
     private var replyText: TextView? = null
+
+    private val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+
+                // There are no request codes
+                replyHeaderTextView?.visibility = View.VISIBLE
+                val reply = result.data?.getStringExtra(EXTRA_REPLY)
+                replyText?.text = reply
+                replyText?.visibility = View.VISIBLE
+
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,19 +48,7 @@ class MainActivity : AppCompatActivity() {
         val message = editTextMessage?.text.toString()
         val intent = Intent(this, SecondActivity::class.java)
             .putExtra(EXTRA_MESSAGE, message)
-        startActivityForResult(intent, TEXT_REQUEST)
+        resultLauncher.launch(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == TEXT_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                replyHeaderTextView?.visibility = View.VISIBLE
-
-                val reply = data?.getStringExtra(EXTRA_REPLY)
-                replyText?.text = reply
-                replyText?.visibility = View.VISIBLE
-            }
-        }
-    }
 }
