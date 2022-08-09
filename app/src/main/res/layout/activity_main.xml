@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+   <EditText
+       android:id="@+id/ed_text_main_activity"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toStartOf="@id/btn_send"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:layout_margin="12dp"
+       android:inputType="textLongMessage"
+       android:ems="10"
+       android:hint="@string/text_enter_your_message_here"
+       />
+
    <Button
        android:id="@+id/btn_send"
        android:layout_width="wrap_content"
